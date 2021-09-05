@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Elevator;
+
 interface ElevatorRepositoryInterface
 {
     /**
@@ -9,7 +11,7 @@ interface ElevatorRepositoryInterface
      *
      * @return array
      */
-    public function getAll(): array;
+    public function getAll();
 
     /**
      * Get all data with paginate.
@@ -17,23 +19,23 @@ interface ElevatorRepositoryInterface
      * @var $limit
      * @return array
      */
-    public function getPaginate($limit): array;
+    public function getPaginate($limit);
 
     /**
      * Get data by id.
      *
      * @param $id
-     * @return array
+     * @return Elevator
      */
-    public function getById($id): array;
+    public function getById($id);
 
     /**
      * Get data by number.
      *
      * @param $number
-     * @return array
+     * @return Elevator
      */
-    public function getByNumber($number): array;
+    public function getByNumber($number);
 
     /**
      * Create new data.

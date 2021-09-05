@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Sequence;
+
 interface SequenceRepositoryInterface
 {
     /**
@@ -9,7 +11,7 @@ interface SequenceRepositoryInterface
      *
      * @return array
      */
-    public function getAll(): array;
+    public function getAll();
 
     /**
      * Get all data with paginate.
@@ -17,15 +19,15 @@ interface SequenceRepositoryInterface
      * @return array
      * @var $limit
      */
-    public function getPaginate($limit): array;
+    public function getPaginate($limit);
 
     /**
      * Get data by id.
      *
      * @param $id
-     * @return array
+     * @return Sequence
      */
-    public function getById($id): array;
+    public function getById($id);
 
     /**
      * Create new data.

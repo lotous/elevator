@@ -39,9 +39,9 @@ class Report extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function startFloor()
+    public function start_floor()
     {
-        return $this->hasOne(Floor::class, 'start_floor_id');
+        return $this->hasOne(Floor::class, 'id', 'start_floor_id');
     }
 
     /**
@@ -49,9 +49,9 @@ class Report extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function endFloor()
+    public function end_floor()
     {
-        return $this->hasOne(Floor::class, 'end_floor_id');
+        return $this->hasOne(Floor::class, 'id', 'end_floor_id');
     }
 
     /**
@@ -61,7 +61,7 @@ class Report extends Model
      */
     public function elevator()
     {
-        return $this->hasOne(Elevator::class);
+        return $this->hasOne(Elevator::class, 'id', 'elevator_id');
     }
 
 

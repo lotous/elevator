@@ -24,7 +24,7 @@ class ElevatorRepository implements ElevatorRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getAll(): array
+    public function getAll()
     {
         return $this->model->all();
     }
@@ -32,7 +32,7 @@ class ElevatorRepository implements ElevatorRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getPaginate($limit): array
+    public function getPaginate($limit)
     {
         return $this->model->paginate($limit);
     }
@@ -40,17 +40,17 @@ class ElevatorRepository implements ElevatorRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getById($id): array
+    public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->find($id);
     }
 
     /**
      * @inheritDoc
      */
-    public function getByNumber($number): array
+    public function getByNumber($number)
     {
-        return  $this->model->where('number', $number)->firstOrFail();
+        return  $this->model->where('number', $number)->first();
     }
 
     /**
@@ -66,7 +66,7 @@ class ElevatorRepository implements ElevatorRepositoryInterface
      */
     public function update($id, array $payload)
     {
-        return $this->model->findOrFail($id)->update($payload);
+        return $this->model->find($id)->update($payload);
     }
 
     /**
@@ -74,6 +74,6 @@ class ElevatorRepository implements ElevatorRepositoryInterface
      */
     public function delete($id)
     {
-        return $this->model->findOrFail($id)->delete();
+        return $this->model->find($id)->delete();
     }
 }

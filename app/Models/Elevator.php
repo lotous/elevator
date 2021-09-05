@@ -19,4 +19,7 @@ class Elevator extends Model
         'name',
         'number',
     ];
+    /**
+     * @var mixed
+     */
 }

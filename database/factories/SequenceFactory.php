@@ -121,7 +121,7 @@ class SequenceFactory extends Factory
                         "end_time" => '20:00',
                         "start_floor_id" => $floor->id,
                         "end_floor_id" => Floor::where('number', '0')->first()->id,
-                        "latency" => 7
+                        "latency" => 3
                     ];
                 }
             }

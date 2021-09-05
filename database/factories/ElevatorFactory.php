@@ -13,7 +13,7 @@ class ElevatorFactory extends Factory
      *
      * @var int
      */
-    private static int $elevatorNumber = 1;
+    private static $elevatorNumber = 0;
 
     /**
      * The name of the factory's corresponding model.
@@ -32,7 +32,7 @@ class ElevatorFactory extends Factory
         $number = self::$elevatorNumber++;
         return [
             'number' => $number,
-            'name' => 'Elevator '.$number
+            'name' => 'Elevator '.($number+1)
         ];
     }
 }

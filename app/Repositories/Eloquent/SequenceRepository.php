@@ -24,7 +24,7 @@ class SequenceRepository implements SequenceRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getAll(): array
+    public function getAll()
     {
         return $this->model->all();
     }
@@ -32,7 +32,7 @@ class SequenceRepository implements SequenceRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getPaginate($limit): array
+    public function getPaginate($limit)
     {
         return $this->model->paginate($limit);
     }
@@ -40,9 +40,9 @@ class SequenceRepository implements SequenceRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getById($id): array
+    public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->find($id);
     }
 
     /**
@@ -58,7 +58,7 @@ class SequenceRepository implements SequenceRepositoryInterface
      */
     public function delete($id)
     {
-        return $this->model->findOrFail($id)->delete();
+        return $this->model->find($id)->delete();
     }
 
     /**

@@ -24,7 +24,7 @@ class ReportRepository implements ReportRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getAll(): array
+    public function getAll()
     {
         return $this->model->all();
     }
@@ -32,7 +32,7 @@ class ReportRepository implements ReportRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getPaginate($limit): array
+    public function getPaginate($limit)
     {
         return $this->model->paginate($limit);
     }
@@ -40,9 +40,9 @@ class ReportRepository implements ReportRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getById($id): array
+    public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->find($id);
     }
 
     /**
@@ -56,9 +56,9 @@ class ReportRepository implements ReportRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getBySequenceId($id): array
+    public function getBySequenceId($id)
     {
-        return  $this->model->where('sequence_id', $id)->firstOrFail();
+        return  $this->model->where('sequence_id', $id)->first();
     }
 
     /**
@@ -66,15 +66,24 @@ class ReportRepository implements ReportRepositoryInterface
      */
     public function getByElevatorAtTime($id, $time)
     {
-        return $this->model->where('elevator_id', $id)->where('time', '<=', date('H:i', $time))->orderBy('time', 'DESC')->first();
+        return $this->model->where('elevator_id', $id)->where('current_time',date('H:i', $time))->first();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getByElevatorAtTimeLt($id, $time)
+    {
+        return $this->model->where('elevator_id', $id)->where('current_time', '<=', date('H:i', $time))->orderBy('current_time', 'DESC')->first();
+    }
+
 
     /**
      * @inheritDoc
      */
     public function getSumFloorTraveledByElevatorAtTime($id, $time)
     {
-        return $this->model->where('elevator_id', $id)->where('time', '<=', date('H:i', $time))->get()->sum('floor_traveled');
+        return $this->model->where('elevator_id', $id)->where('current_time', '<=', date('H:i', $time))->sum('floor_traveled');
     }
 
     /**
@@ -83,5 +92,13 @@ class ReportRepository implements ReportRepositoryInterface
     public function deleteAll()
     {
         return $this->model->truncate();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getByElevatorId($id)
+    {
+        return $this->model->where('elevator_id', $id)->orderBy('current_time', 'DESC')->first();
     }
 }

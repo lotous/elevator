@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Floor;
+
 interface FloorRepositoryInterface
 {
 
@@ -10,7 +12,7 @@ interface FloorRepositoryInterface
      *
      * @return array
      */
-    public function getAll(): array;
+    public function getAll();
 
     /**
      * Get all data with paginate.
@@ -18,23 +20,23 @@ interface FloorRepositoryInterface
      * @return array
      * @var $limit
      */
-    public function getPaginate($limit): array;
+    public function getPaginate($limit);
 
     /**
      * Get data by id.
      *
      * @param $id
-     * @return array
+     * @return Floor
      */
-    public function getById($id): array;
+    public function getById($id);
 
     /**
      * Get data by number.
      *
      * @param $number
-     * @return array
+     * @return Floor
      */
-    public function getByNumber($number): array;
+    public function getByNumber($number);
 
     /**
      * Create new data.
